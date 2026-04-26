@@ -22,9 +22,12 @@ public class CrudAppApplication {
 			//createStudent(studentDAO);
 			//createMultipleStudents(studentDAO);
 			//readStudent(studentDAO);
-			queryForStudents(studentDAO);
+			//queryForStudents(studentDAO);
+			queryForStudentsByLastName(studentDAO);
 		};
+
 	}
+
 
 	private void readStudent(StudentDAO studentDAO) {
 
@@ -87,10 +90,20 @@ public class CrudAppApplication {
 		List<Student> theStudents = studentDAO.findAll();
 
 		//afiseaza lista de stundeti
-		for (Student newStudent : theStudents){
+		for (Student newStudent : theStudents) {
 			System.out.println(newStudent);
 		}
 
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+		// returneaza lista de studenti
+		List<Student> theStudent = studentDAO.findByLastName("Popescu");
+
+		//afiseaza lista de studenti
+		for (Student newStudent : theStudent) {
+			System.out.println(newStudent);
+		}
 	}
 }
 
