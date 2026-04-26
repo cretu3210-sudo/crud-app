@@ -7,6 +7,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Repository
 public class StudentDAOImplementation implements StudentDAO{
     //Cimp pentru EntityManager (va fi utilizat pentru interactiunea cu baza de date)
@@ -24,5 +26,10 @@ public class StudentDAOImplementation implements StudentDAO{
     public void save (Student theStudent){
         entityManager.persist(theStudent);
 
+    }
+
+    @Override
+    public Student findbyId(Integer id) {
+        return entityManager.find(Student.class, id);
     }
 }
